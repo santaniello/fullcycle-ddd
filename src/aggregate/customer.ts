@@ -26,6 +26,7 @@ export default  class Customer{
    private _name: string;
    private _address!: Address;
    private _active: boolean = false;
+   private _rewardPoints: number = 0;
 
     /**
      * O construtor vai garantir que um objeto seja criado em um estado consistente;
@@ -36,9 +37,17 @@ export default  class Customer{
         this.validate();
     }
 
+    get id(): string {
+        return this._id;
+      }
+
     get name(): string {
         return this._name;
     }
+
+    get rewardPoints(): number {
+        return this._rewardPoints;
+      }
 
     get Address(): Address {
         return this._address;
@@ -75,6 +84,10 @@ export default  class Customer{
         }
         this._active = true;
     }
+
+    addRewardPoints(points: number) {
+        this._rewardPoints += points;
+      }
 
     deactivate(){
         this._active = false;
