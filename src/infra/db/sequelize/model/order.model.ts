@@ -1,0 +1,57 @@
+import {
+    Table,
+    Model,
+    PrimaryKey,
+    Column,
+    ForeignKey,
+    BelongsTo,
+    HasMany,
+  } from "sequelize-typescript";
+import CustomerModel from "./customer.model";
+import OrderItemModel from "./order-item.model";
+import OrderItem from "../../../../domain/entity/order_item";
+
+  
+  @Table({
+    tableName: "orders",
+    timestamps: false,
+  })
+  export default class OrderModel extends Model {
+    @PrimaryKey
+    @Column
+    declare id: string;
+  
+    @ForeignKey(() => CustomerModel)
+    @Column({ allowNull: false })
+    declare customer_id: string;
+  
+    @BelongsTo(() => CustomerModel)
+    declare customer: CustomerModel;
+  
+    @HasMany(() => OrderItemModel)
+    declare items: OrderItemModel[];
+  
+    @Column({ allowNull: false })
+    declare total: number;
+   
+  //   itemsToDomain(): OrderItem[] {
+  //     let orderItems: OrderItem[] = [];
+  //     for (const itemModel of this.items) {
+  //         let itemDomain: OrderItem = {
+  //             id: itemModel.id,
+  //             name: itemModel.name,
+  //             price: itemModel.price,
+  //             productId: itemModel.product_id,
+  //             quantity: itemModel.quantity,
+  //             total: itemModel,             
+  //         };
+  //         orderItems.push(itemDomain);    
+  //     }        
+  //     return orderItems;
+  // }
+  
+      
+
+  
+}   
+  
