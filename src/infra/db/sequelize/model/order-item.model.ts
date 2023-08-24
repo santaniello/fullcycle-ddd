@@ -9,6 +9,7 @@ import {
   
   import OrderModel from "./order.model";
 import ProductModel from "./product.model";
+import OrderItem from "../../../../domain/entity/order_item";
   
   
   @Table({
@@ -43,6 +44,8 @@ import ProductModel from "./product.model";
     @Column({ allowNull: false })
     declare price: number;
 
-    
-
+    toDomain(): OrderItem{
+      var domain = new OrderItem(this.id, this.name, this.price, this.product_id, this.quantity);
+      return domain;
+    }
   }

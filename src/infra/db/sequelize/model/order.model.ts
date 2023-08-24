@@ -10,6 +10,7 @@ import {
 import CustomerModel from "./customer.model";
 import OrderItemModel from "./order-item.model";
 import OrderItem from "../../../../domain/entity/order_item";
+import Order from "../../../../domain/aggregate/order";
 
   
   @Table({
@@ -34,24 +35,12 @@ import OrderItem from "../../../../domain/entity/order_item";
     @Column({ allowNull: false })
     declare total: number;
    
-  //   itemsToDomain(): OrderItem[] {
-  //     let orderItems: OrderItem[] = [];
-  //     for (const itemModel of this.items) {
-  //         let itemDomain: OrderItem = {
-  //             id: itemModel.id,
-  //             name: itemModel.name,
-  //             price: itemModel.price,
-  //             productId: itemModel.product_id,
-  //             quantity: itemModel.quantity,
-  //             total: itemModel,             
-  //         };
-  //         orderItems.push(itemDomain);    
-  //     }        
-  //     return orderItems;
-  // }
-  
-      
+    toDomain(): Order {
+      const itemsDomain = this.items.map((itemModel) =>
+        itemModel.toDomain()
+      );         
+      return new Order(this.id, this.customer_id, itemsDomain);
+    }  
 
-  
 }   
   
