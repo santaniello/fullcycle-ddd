@@ -112,8 +112,10 @@ describe("Order repository test", () => {
     const orderRepository = new OrderRepository();
     await orderRepository.create(order);
 
-    // Update an Order 
-
+    /***
+     * Update Order
+     *    
+     */
     const product2 = new Product("456", "Product 2", 11);
     await productRepository.create(product2);
 
@@ -123,66 +125,58 @@ describe("Order repository test", () => {
       product2.price,
       product2.id,
       2
-    );
-    
-    let orderModel = await OrderModel.findOne({
-      where: { id: order.id },
-      include: ["items"],
-    });
-
-    expect(orderModel.toJSON()).toStrictEqual({
-      id: "123",
-      customer_id: "123",
-      total: order.total(),
-      items: [
-        {
-          id: orderItem.id,
-          name: orderItem.name,
-          price: orderItem.price,
-          quantity: orderItem.quantity,
-          order_id: "123",
-          product_id: "123",
-        },
-      ],
-    });
+    );    
 
     // Adicionando novo item
 
-    order.addNewItem(orderItem2);
-    orderRepository.update(order);
+    order.addNewItem(orderItem2);    
+    await orderRepository.update(order);
 
     let orderModel2 = await OrderModel.findOne({
       where: { id: order.id },
-      include: ["items"],
+      include: [{
+        association: "items",
+        order: [[ 'product_id', 'ASC' ]] // Orders items by product_id in ascending order
+      }]
     });
 
     expect(orderModel2.toJSON()).toStrictEqual({
       id: "123",
       customer_id: "123",
-      //total: order.total(),
-      items: [
+      total: 42,
+      items: [       
         {
-          id: orderItem.id,
-          name: orderItem.name,
-          price: orderItem.price,
-          quantity: orderItem.quantity,
+          id: "1",
+          name: "Product 1",
+          price: 10,
+          quantity: 2,
           order_id: "123",
           product_id: "123",
-        },
+        },     
         {
-          id: orderItem.id,
-          name: orderItem.name,
-          price: orderItem.price,
-          quantity: orderItem.quantity,
+          id: "2",
+          name: "Product 2",
+          price: 11,
+          quantity: 2,
           order_id: "123",
           product_id: "456",
-        },
+        },       
       ],
     });
-  });
+  });  
 
-  function createFakeProduct(): Product {
-    return new Product("fake-id", "Fake Product", 99.99);
-  }
+  it("should throw an error when order is not found in a update" , async () => {
+    const orderRepository = new OrderRepository();
+    const orderItem = new OrderItem(
+      "1",
+      "Teste",
+      333,
+      "777",
+      2
+    );
+    expect(async () => {
+        await orderRepository.update(new Order("333","222",[orderItem]))
+    }).rejects.toThrow("Order not found");
+  });
 
 });

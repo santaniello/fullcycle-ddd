@@ -26,23 +26,56 @@ export default class OrderRepository implements OrderRepositoryInterface{
   }
 
   async update(entity: Order): Promise<void> {
-    await OrderItemModel.destroy({
-      where: {
-        orderId: entity.id, 
-      },
+    // 1. Atualize a Order principal
+  let existingOrder;
+    try{  
+      existingOrder = await OrderModel.findByPk(entity.id);
+      if (!existingOrder) {
+          throw new Error("Order not found");
+      }
+    } catch (error) {
+      throw new Error("Order not found");
+    }  
+    
+    await existingOrder.update({
+        total: entity.total(),
     });
 
-    for (const item of entity.items) {
-      await OrderItemModel.create({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        product_id: item.productId,
-        quantity: item.quantity,
-        orderId: entity.id, 
-      });
+    // 2. Atualize os OrderItems
+    const existingItems = await OrderItemModel.findAll({
+        where: { order_id: entity.id }
+    });
+
+    for (const newItem of entity.items) {
+        const existingItem = existingItems.find(item => item.id === newItem.id);
+        if (existingItem) {
+            await existingItem.update({
+                name: newItem.name,
+                price: newItem.price,
+                product_id: newItem.productId,
+                quantity: newItem.quantity,
+            });
+        } else {
+            await OrderItemModel.create({
+                id: newItem.id,
+                name: newItem.name,
+                price: newItem.price,
+                product_id: newItem.productId,
+                quantity: newItem.quantity,
+                order_id: entity.id,
+            });
+        }
     }
-  }
+
+    // Exclui os OrderItems que não estão mais presentes
+    for (const oldItem of existingItems) {
+        if (!entity.items.some(newItem => newItem.id === oldItem.id)) {
+            await oldItem.destroy();
+        }
+    }
+}
+
+
 
   async find(id: string): Promise<Order> {   
     const orderModel = await OrderModel.findOne({ where: { id } });
