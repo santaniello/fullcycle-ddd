@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1693007376642" clover="3.2.0">
-  <project timestamp="1693007376642" name="All files">
-    <metrics statements="721" coveredstatements="705" conditionals="116" coveredconditionals="106" methods="63" coveredmethods="62" elements="900" coveredelements="873" complexity="0" loc="721" ncloc="721" packages="6" files="14" classes="14"/>
+<coverage generated="1693223782212" clover="3.2.0">
+  <project timestamp="1693223782213" name="All files">
+    <metrics statements="783" coveredstatements="767" conditionals="126" coveredconditionals="116" methods="72" coveredmethods="71" elements="981" coveredelements="954" complexity="0" loc="783" ncloc="783" packages="9" files="17" classes="17"/>
     <package name="domain.aggregate">
       <metrics statements="200" coveredstatements="200" conditionals="51" coveredconditionals="51" methods="30" coveredmethods="30"/>
       <file name="customer.ts" path="/home/fsantaniello/Documentos/fullcycle-ddd/src/domain/aggregate/customer.ts">
@@ -268,6 +268,86 @@
         <line num="48" count="16" type="stmt"/>
         <line num="49" count="16" type="stmt"/>
         <line num="50" count="16" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.event.@shared">
+      <metrics statements="40" coveredstatements="40" conditionals="7" coveredconditionals="7" methods="6" coveredmethods="6"/>
+      <file name="event-dispatcher.ts" path="/home/fsantaniello/Documentos/fullcycle-ddd/src/domain/event/@shared/event-dispatcher.ts">
+        <metrics statements="40" coveredstatements="40" conditionals="7" coveredconditionals="7" methods="6" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="9" type="stmt"/>
+        <line num="11" count="9" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="32" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.event.product">
+      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="product-created.event.ts" path="/home/fsantaniello/Documentos/fullcycle-ddd/src/domain/event/product/product-created.event.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.event.product.handler">
+      <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="send-email-when-product-is-created.handler.ts" path="/home/fsantaniello/Documentos/fullcycle-ddd/src/domain/event/product/handler/send-email-when-product-is-created.handler.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
       </file>
     </package>
     <package name="domain.service">
