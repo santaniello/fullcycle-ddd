@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1693320135652" clover="3.2.0">
-  <project timestamp="1693320135653" name="All files">
-    <metrics statements="834" coveredstatements="818" conditionals="134" coveredconditionals="124" methods="79" coveredmethods="78" elements="1047" coveredelements="1020" complexity="0" loc="834" ncloc="834" packages="11" files="22" classes="22"/>
+<coverage generated="1693391819882" clover="3.2.0">
+  <project timestamp="1693391819882" name="All files">
+    <metrics statements="839" coveredstatements="823" conditionals="137" coveredconditionals="124" methods="79" coveredmethods="78" elements="1055" coveredelements="1025" complexity="0" loc="839" ncloc="839" packages="11" files="22" classes="22"/>
     <package name="domain.aggregate">
       <metrics statements="200" coveredstatements="200" conditionals="51" coveredconditionals="51" methods="30" coveredmethods="30"/>
       <file name="customer.ts" path="/home/fsantaniello/Documentos/fullcycle-ddd/src/domain/aggregate/customer.ts">
@@ -349,7 +349,7 @@
       </file>
     </package>
     <package name="domain.event.customer.handler">
-      <metrics statements="28" coveredstatements="28" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+      <metrics statements="33" coveredstatements="33" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="print-log1-when-customer-is-created.handler.ts" path="/home/fsantaniello/Documentos/fullcycle-ddd/src/domain/event/customer/handler/print-log1-when-customer-is-created.handler.ts">
         <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -375,7 +375,7 @@
         <line num="9" count="1" type="stmt"/>
       </file>
       <file name="print-log3-when-customer-address-is-changed.handler.ts" path="/home/fsantaniello/Documentos/fullcycle-ddd/src/domain/event/customer/handler/print-log3-when-customer-address-is-changed.handler.ts">
-        <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -383,9 +383,14 @@
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="9" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="10" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
       </file>
     </package>
     <package name="domain.event.product">

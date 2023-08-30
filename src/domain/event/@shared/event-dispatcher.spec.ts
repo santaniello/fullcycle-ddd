@@ -217,10 +217,9 @@ describe("Domain events tests", () => {
     ).toMatchObject(eventHandler1);
     
     const customerChangedAddressEvent = new CustomerChangedAddressEvent({
-      street: "Street 1",
-      number: 0,
-      zip: "02155-050",
-      city: "São Paulo"      
+      id: "aaaa",
+      nome: "Joao",
+      endereco: "Rua Santo Amaro 127 - São Paulo - SP"      
     });
 
     eventDispatcher.notify(customerChangedAddressEvent);
